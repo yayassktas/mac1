@@ -27,10 +27,14 @@ level.screen(window)
 macgyver = mac("utils/ressources/mac.png", level)
 stuff2 = Stuff("utils/ressources/tube.png", level.structure)
 stuff2.randomize_position()
+level.structure[stuff2.y][stuff2.x] = 's'
 stuff3 = Stuff("utils/ressources/syringe.png", level.structure)
 stuff3.randomize_position()
+level.structure[stuff3.y][stuff3.x] = 's'
 stuff4 = Stuff("utils/ressources/ether.png", level.structure)
 stuff4.randomize_position()
+level.structure[stuff4.y][stuff4.x] = 's'
+
 win = pygame.image.load("utils/ressources/winner.png").convert_alpha()
 loose = pygame.image.load("utils/ressources/looser.png").convert_alpha()
 over2 = False

@@ -36,9 +36,6 @@ loose = pygame.image.load("utils/ressources/looser.png").convert_alpha()
 over2 = False
 over1 = False
 over = False
-
-# main loop
-
 continu = 1
 continu_game = 1
 count = 0
@@ -51,7 +48,6 @@ def end():
         window.blit(win, (100, 100))
         pygame.display.flip()
         continu_game = 0
-
 
     if level.structure[macgyver.case_y][macgyver.case_x] == 'g' and count != 3:
         window.blit(loose, (100, 100))
@@ -86,6 +82,7 @@ def artefact():
     window.blit(macgyver.direction, (macgyver.x, macgyver.y))
     pygame.display.flip()
 
+
 # game loop
 while continu_game:
     for event in pygame.event.get():
@@ -111,6 +108,5 @@ while continu_game:
         # Displays at new positions
         window.blit(background, (0, 0))
         level.screen(window)
-
         artefact()
         end()

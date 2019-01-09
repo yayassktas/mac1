@@ -38,9 +38,53 @@ over1 = False
 over = False
 
 # main loop
+
 continu = 1
 continu_game = 1
 count = 0
+
+
+def end():
+    global continu_game
+
+    if level.structure[macgyver.case_y][macgyver.case_x] == 'a' and count == 3:
+        window.blit(win, (100, 100))
+        pygame.display.flip()
+        continu_game = 0
+
+
+    if level.structure[macgyver.case_y][macgyver.case_x] == 'g' and count != 3:
+        window.blit(loose, (100, 100))
+        pygame.display.flip()
+        continu_game = 0
+
+
+def artefact():
+    global over
+    global over1
+    global over2
+    global count
+
+    if stuff2.y * size_sprite == macgyver.x and stuff2.x * size_sprite == macgyver.y and not over:
+        over = True
+        count = count + 1
+    if not over:
+        window.blit(stuff2.direction, (stuff2.y * size_sprite, stuff2.x * size_sprite))
+
+    if stuff3.y * size_sprite == macgyver.x and stuff3.x * size_sprite == macgyver.y and not over1:
+        over1 = True
+        count = count + 1
+    if not over1:
+        window.blit(stuff3.direction, (stuff3.y * size_sprite, stuff3.x * size_sprite))
+
+    if stuff4.y * size_sprite == macgyver.x and stuff4.x * size_sprite == macgyver.y and not over2:
+        over2 = True
+        count = count + 1
+    if not over2:
+        window.blit(stuff4.direction, (stuff4.y * size_sprite, stuff4.x * size_sprite))
+
+    window.blit(macgyver.direction, (macgyver.x, macgyver.y))
+    pygame.display.flip()
 
 # game loop
 while continu_game:
@@ -68,33 +112,5 @@ while continu_game:
         window.blit(background, (0, 0))
         level.screen(window)
 
-        if stuff2.y * size_sprite == macgyver.x and stuff2.x * size_sprite == macgyver.y and not over:
-            over = True
-            count = count + 1
-        if not over:
-            window.blit(stuff2.direction, (stuff2.y * size_sprite, stuff2.x * size_sprite))
-
-        if stuff3.y * size_sprite == macgyver.x and stuff3.x * size_sprite == macgyver.y and not over1:
-            over1 = True
-            count = count + 1
-        if not over1:
-            window.blit(stuff3.direction, (stuff3.y * size_sprite, stuff3.x * size_sprite))
-
-        if stuff4.y * size_sprite == macgyver.x and stuff4.x * size_sprite == macgyver.y and not over2:
-            over2 = True
-            count = count + 1
-        if not over2:
-            window.blit(stuff4.direction, (stuff4.y * size_sprite, stuff4.x * size_sprite))
-
-        window.blit(macgyver.direction, (macgyver.x, macgyver.y))
-        pygame.display.flip()
-
-        if level.structure[macgyver.case_y][macgyver.case_x] == 'a' and count == 3:
-            window.blit(win, (100, 100))
-            pygame.display.flip()
-            continu_game = 0
-
-        if level.structure[macgyver.case_y][macgyver.case_x] == 'g' and count != 3:
-            window.blit(loose, (100, 100))
-            pygame.display.flip()
-            continu_game = 0
+        artefact()
+        end()

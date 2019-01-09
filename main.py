@@ -98,3 +98,4 @@ while continu_game:
             window.blit(loose, (100, 100))
             pygame.display.flip()
             continu_game = 0
+#test git

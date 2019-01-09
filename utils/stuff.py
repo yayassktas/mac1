@@ -23,6 +23,7 @@ class Stuff:
     def randomize_position(self):
         self.x = random.randint(0, 14)
         self.y = random.randint(0, 14)
-        if self.level[self.x][self.y] == 'm' or self.level[self.x][self.y] == 's':
+        if self.level[self.x][self.y] == 'm' or self.level[self.x][self.y] == 's' or self.level[self.x][self.y] == 'd'\
+            or self.level[self.x][self.y] == 'g' or self.level[self.x][self.y] == 'a':
             self.randomize_position()
 

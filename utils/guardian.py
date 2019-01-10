@@ -3,18 +3,18 @@
 from utils.custom import *
 
 
-class guardian(Custom):
+class Guardian(Custom):
 
 
 
     def __init__(self, img, level):
 
         self.img = pygame.image.load(img).convert_alpha()
-        # Character position in boxes and pixels
+        """ Character position in boxes and pixels """
 
         self.x = 269
         self.y = 195
-        # Default direction
+        """ Default direction """
         self.direction = self.img
-        # Level in which the character is located
+        """ Level in which the character is located """
         self.level = level

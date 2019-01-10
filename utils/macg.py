@@ -6,7 +6,7 @@ from utils.custom import *
 from utils.constantes import *
 
 
-class mac(Custom):
+class Mac(Custom):
 
     def __init__(self, img, level):
 

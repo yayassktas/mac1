@@ -7,59 +7,59 @@ from utils.maze import *
 
 pygame.init()
 
-# Opening the Pygame window (square: width = height)
+""" Opening the Pygame window (square: width = height) """
 window = pygame.display.set_mode((side_window, side_window))
-# Icone
+""" Icone """
 icon = pygame.image.load(picture_icon)
 pygame.display.set_icon(icon)
-# Title
+""" Title """
 pygame.display.set_caption(title_window)
 
-# background loading
+""" background loading """
 background = pygame.image.load(picture_background).convert()
 
-# Generating a level from a file
+""" Generating a level from a file """
 level = Level('utils/n1')
-level.genererate()
+level.produce()
 level.screen(window)
 
-# creates objets
-macgyver = mac("utils/ressources/mac.png", level)
-stuff2 = Stuff("utils/ressources/tube.png", level.structure)
+""" creates chars """
+macgyver = Mac("utils/resources/mac.png", level)
+stuff2 = Stuff("utils/resources/tube.png", level.structure)
 stuff2.randomize_position()
 level.structure[stuff2.y][stuff2.x] = 's'
-stuff3 = Stuff("utils/ressources/syringe.png", level.structure)
+stuff3 = Stuff("utils/resources/syringe.png", level.structure)
 stuff3.randomize_position()
 level.structure[stuff3.y][stuff3.x] = 's'
-stuff4 = Stuff("utils/ressources/ether.png", level.structure)
+stuff4 = Stuff("utils/resources/ether.png", level.structure)
 stuff4.randomize_position()
 level.structure[stuff4.y][stuff4.x] = 's'
 
-win = pygame.image.load("utils/ressources/winner.png").convert_alpha()
-loose = pygame.image.load("utils/ressources/looser.png").convert_alpha()
+win = pygame.image.load("utils/resources/winner.png").convert_alpha()
+loose = pygame.image.load("utils/resources/looser.png").convert_alpha()
 over2 = False
 over1 = False
 over = False
-continu = 1
-continu_game = 1
+continue_g = 1
+continue_game = 1
 count = 0
 
 
 def end():
-    global continu_game
+    global continue_game
 
     if level.structure[macgyver.case_y][macgyver.case_x] == 'a' and count == 3:
         window.blit(win, (100, 100))
         pygame.display.flip()
-        continu_game = 0
+        continue_game = 0
 
     if level.structure[macgyver.case_y][macgyver.case_x] == 'g' and count != 3:
         window.blit(loose, (100, 100))
         pygame.display.flip()
-        continu_game = 0
+        continue_game = 0
 
 
-def artefact():
+def artifact():
     global over
     global over1
     global over2
@@ -87,17 +87,17 @@ def artefact():
     pygame.display.flip()
 
 
-# game loop
-while continu_game:
+""" game loop """
+while continue_game:
     for event in pygame.event.get():
 
         if event.type == QUIT:
-            continu_game = 0
-            continu = 0
+            continue_game = 0
+            continue_g = 0
 
         elif event.type == KEYDOWN:
             if event.key == K_ESCAPE:
-                continu_game = 0
+                continue_game = 0
 
             # movement key
             elif event.key == K_RIGHT:
@@ -109,8 +109,8 @@ while continu_game:
             elif event.key == K_DOWN:
                 macgyver.move('down')
 
-        # Displays at new positions
+        """ Displays at new positions """
         window.blit(background, (0, 0))
         level.screen(window)
-        artefact()
+        artifact()
         end()

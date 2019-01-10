@@ -3,16 +3,14 @@
 
 
 class Custom:
-    case_x = 0
-    case_y = 0
 
     def __init__(self, img, level):
         self.img = pygame.image.load(img).convert_alpha()
-        # Character position in boxes and pixels
+        """ Character position in boxes and pixels """
         self.case_x = 0
         self.case_y = 0
 
-        # Default direction
+        """ Default direction """
         self.direction = self.img
-        # Level in which the character is located
+        """ Level in which the character is located """
         self.level = level

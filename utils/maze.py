@@ -6,13 +6,14 @@ from utils.constantes import *
 pygame.init()
 
 
-class Level:  # generate level
-
+class Level:
+    """ generate level"""
     def __init__(self, file):
         self.file = file
         self.structure = 0
 
-    def genererate(self):
+    def produce(self):
+
         """Method for generating the level based on the file.
          We create a general list, containing a list per line to display"""
 
@@ -37,7 +38,7 @@ class Level:  # generate level
         wall = pygame.image.load(picture_wall).convert()
         start = pygame.image.load(picture_start).convert()
         come = pygame.image.load(picture_come).convert_alpha()
-        guardian = pygame.image.load(gardian).convert_alpha()
+        guardian = pygame.image.load(guardian1).convert_alpha()
 
         # We go through the list of level
         num_line = 0
@@ -48,13 +49,17 @@ class Level:  # generate level
                 # The actual position in pixels is calculated
                 x = num_case * size_sprite
                 y = num_line * size_sprite
-                if sprite == 'm':  # m = Mur
+                """m = wall"""
+                if sprite == 'm':
                     window.blit(wall, (x, y))
-                elif sprite == 'd':  # d = Départ
+                    """d = Start"""
+                elif sprite == 'd':
                     window.blit(start, (x, y))
+                    """g = Gardian"""
                 elif sprite == 'g':
                     window.blit(guardian, (x, y))
-                elif sprite == 'a':  # a = Arrivée
+                    """ a = Come"""
+                elif sprite == 'a':
                     window.blit(come, (x, y))
 
                 num_case += 1

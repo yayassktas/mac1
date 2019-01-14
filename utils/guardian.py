@@ -1,11 +1,9 @@
 #! /usr/bin/env python3
 # coding: utf-8
-from utils.custom import *
+import pygame
 
 
-class Guardian(Custom):
-
-
+class Guardian:
 
     def __init__(self, img, level):
 

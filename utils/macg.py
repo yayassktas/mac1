@@ -2,11 +2,10 @@
 # coding: utf-8
 
 import pygame
-from utils.custom import *
 from utils.constantes import *
 
 
-class Mac(Custom):
+class Mac:
 
     def __init__(self, img, level):
 
@@ -19,13 +18,13 @@ class Mac(Custom):
         self.direction = self.img
         self.level = level
 
-    def goright(self):
+    def go_right(self):
         if self.case_x < (number_sprite_side - 1):
             if self.level.structure[self.case_y][self.case_x + 1] != 'm':
                 self.case_x += 1
                 self.x = self.case_x * size_sprite
 
-    def goleft(self):
+    def go_left(self):
         if self.case_x > 0:
             if self.level.structure[self.case_y][self.case_x - 1] != 'm':
                 self.case_x -= 1
@@ -47,10 +46,10 @@ class Mac(Custom):
         # Method for moving the character
 
         if direction == 'right':
-            self.goright()
+            self.go_right()
 
         elif direction == 'left':
-            self.goleft()
+            self.go_left()
 
         elif direction == 'up':
             self.go_up()
